@@ -1,28 +1,40 @@
 ---
 # vars file for collectd
 
+# RH configuration
 collectd_packages_RedHat:
  - { package: "collectd" }
  - { package: "collectd-apache" }
  - { package: "collectd-mysql" }
 
+collectd_include_rh: "/etc/collectd.d"
+collectd_conf_rh: "/etc/collectd.conf"
+
+# Debian Configuration
 collectd_packages_Debian:
  - { package: "collectd" }
  - { package: "collectd-utils" }
 
+collectd_conf_deb: "/etc/collectd/collectd.conf"
+collectd_include_deb: "/etc/collectd"
+
+
+# General Configuration
 collectd_global:
  - { directive: "Hostname {{ ansible_fqdn }}" }
  - { directive: "FQDNLookup false" }
  - { directive: "Interval 10" }
  - { directive: "Timeout 2" }
  - { directive: "ReadThreads 5" }
- - { directive: "AutoLoadPlugin false" }
+ # - { directive: "AutoLoadPlugin false" }
 
-collectd_plugins: "none"
-collectd_plugins_multi: "none"
+# Plugins Configuration
 
-collectd_conf_rh: "/etc/collectd.conf"
-collectd_conf_deb: "/etc/collectd/collectd.conf"
+# Plugins that don't need configuration
+collectd_plugins:
+ - { plugin: "cpu" }
+ - { plugin: "memory" }
+ - { plugin: "load" }
 
-collectd_include_rh: "/etc/collectd.d"
-collectd_include_deb: "/etc/collectd"
+# Plugins that need configuration
+collectd_plugins_multi: "aggregation, interface, syslog"

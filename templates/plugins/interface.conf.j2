@@ -1,0 +1,6 @@
+<Plugin interface>
+ {% for interface in ansible_interfaces %}
+ Interface {{ interface }}
+ {% endfor %}
+ IgnoreSelected false
+</Plugin>
