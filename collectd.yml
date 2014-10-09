@@ -1,0 +1,8 @@
+---
+- name         : Collectd configuration 
+  hosts        : all
+  gather_facts : yes
+  sudo         : True
+  
+  roles:
+    - collectd

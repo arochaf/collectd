@@ -19,19 +19,19 @@ LoadPlugin {{ element.plugin }}
 {% endif %}
 
 {% if collectd_plugins_multi is defined %}
-
 ## In this section we define all the plugins which takes multiple directives
 {% for element in collectd_plugins_multi %}
-LoadPlugin {{ element }}
-# Load configuration from file in /templates/plugins
-Include "{{ element }}.conf.j2"
+{% if element.plugin is defined %}
+
+LoadPlugin {{ element.plugin }}
+
+{% set config = element.plugin + '.conf.j2' %}
+{% include config %}
+
+{% endif %}
 {% endfor %}
-
 {% endif %}
 
-{% if ansible_os_family == "RedHat" %}
-#Include "{{ collectd_include_rh }}/*.include.conf"
-{% endif %}
 {% if ansible_os_family == "Debian" %}
-#Include "{{ collectd_include_deb }}/*.include.conf"
+#Include "{{ collectd_include_deb }}/conf"
 {% endif %}

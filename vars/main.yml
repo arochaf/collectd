@@ -1,15 +1,4 @@
 ---
-# vars file for collectd
-
-# RH configuration
-collectd_packages_RedHat:
- - { package: "collectd" }
- - { package: "collectd-apache" }
- - { package: "collectd-mysql" }
-
-collectd_include_rh: "/etc/collectd.d"
-collectd_conf_rh: "/etc/collectd.conf"
-
 # Debian Configuration
 collectd_packages_Debian:
  - { package: "collectd" }
@@ -17,7 +6,6 @@ collectd_packages_Debian:
 
 collectd_conf_deb: "/etc/collectd/collectd.conf"
 collectd_include_deb: "/etc/collectd"
-
 
 # General Configuration
 collectd_global:
@@ -28,13 +16,14 @@ collectd_global:
  - { directive: "ReadThreads 5" }
  # - { directive: "AutoLoadPlugin false" }
 
-# Plugins Configuration
-
-# Plugins that don't need configuration
+# Plugins without configuration
 collectd_plugins:
  - { plugin: "cpu" }
  - { plugin: "memory" }
  - { plugin: "load" }
 
-# Plugins that need configuration
-collectd_plugins_multi: "aggregation, interface, syslog"
+# Plugins with configuration
+collectd_plugins_multi: 
+ - { plugin: "aggregation" }
+ - { plugin: "interface" }
+ - { plugin: "syslog" }
