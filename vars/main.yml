@@ -24,6 +24,6 @@ collectd_plugins:
 
 # Plugins with configuration
 collectd_plugins_multi:
- - { plugin: "logfile" } 
+ - { plugin: "logfile" }
  - { plugin: "aggregation" }
  - { plugin: "interface" }
