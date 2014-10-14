@@ -23,7 +23,7 @@ collectd_plugins:
  - { plugin: "load" }
 
 # Plugins with configuration
-collectd_plugins_multi: 
+collectd_plugins_multi:
+ - { plugin: "logfile" } 
  - { plugin: "aggregation" }
  - { plugin: "interface" }
- - { plugin: "syslog" }

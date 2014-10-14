@@ -14,5 +14,7 @@
             owner=root
             group=root
             mode=0644
+  notify:
+   - restart collectd
   tags:
    - collectd_configure
