@@ -1,5 +1,5 @@
 ---
-# Debian Configuration
+# Configuration
 collectd_packages_Debian:
  - { package: "collectd" }
  - { package: "collectd-utils" }
