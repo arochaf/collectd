@@ -1,0 +1,12 @@
+<Plugin write_graphite>
+    <Node "graphing">
+        Host "{{ graphite_configuration.host }}"
+        Port "{{ graphite_configuration.port }}"
+        Protocol {{ graphite_configuration.protocol }}
+        LogSendErrors true
+        Prefix "collectd."
+        StoreRates true
+        AlwaysAppendDS false
+        EscapeCharacter "_"
+    </Node>
+</Plugin>

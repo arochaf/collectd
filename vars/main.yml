@@ -27,3 +27,10 @@ collectd_plugins_multi:
  - { plugin: "logfile" }
  - { plugin: "aggregation" }
  - { plugin: "interface" }
+ - { plugin: "write_graphite" }
+
+# Individual configuration
+graphite_configuration:
+   host: "localhost"
+   port: "2003"
+   protocol: "tcp"
